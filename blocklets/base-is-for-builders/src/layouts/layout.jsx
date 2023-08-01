@@ -9,6 +9,8 @@ import { Outlet } from 'react-router-dom';
 // import ConnectButton from '@arcblock/did-connect/lib/Button';
 import { useSessionContext } from '../contexts/session';
 
+const withoutLogo = window?.blocklet?.componentMountPoints?.length === 1;
+
 function Layout({ children }) {
   const { session } = useSessionContext();
 
@@ -21,18 +23,7 @@ function Layout({ children }) {
 
   return (
     <Root>
-      <Header
-        logo={
-          null
-          // <img
-          //   src="https://new.arcblock.io/blog/uploads/1671422131542-0dDNjXhEl_1yBIm8h7vC-Gnm.png"
-          //   alt="logo"
-          //   style={{ height: 44 }}
-          // />
-        }
-        className="layout-header"
-        maxWidth={false}
-      />
+      <Header {...(withoutLogo && { logo: null })} className="layout-header" maxWidth={false} />
       <Container className="layout-container">
         <Box className="h-full" pt={2}>
           {children || <Outlet />}

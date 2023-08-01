@@ -1,5 +1,5 @@
 name: base-is-for-builders
-version: 0.0.2
+version: 0.0.3
 title: Base is for builders
 description: A blocklet that lets you mint "Base is for builders" NFT on Base Mainnet.
 keywords:
@@ -29,7 +29,7 @@ interfaces:
   - type: web
     name: publicUrl
     path: /
-    prefix: '*'
+    prefix: "*"
     port: BLOCKLET_PORT
     protocol: tcp
     services:
@@ -47,19 +47,19 @@ interfaces:
             - avatar
           allowSwitchProfile: true
           blockUnauthorized: false
-community: ''
-documentation: ''
-homepage: ''
-license: ''
+community: ""
+documentation: ""
+homepage: ""
+license: ""
 payment:
   price: []
   share: []
 timeout:
   start: 60
 requirements:
-  server: '>=1.16.0'
-  os: '*'
-  cpu: '*'
+  server: ">=1.16.0"
+  os: "*"
+  cpu: "*"
 scripts:
   preStart: node api/hooks/pre-start.js
   dev: npm run start

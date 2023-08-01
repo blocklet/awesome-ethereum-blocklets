@@ -47,13 +47,13 @@ importers:
         specifier: ^1.7.1
         version: 1.7.1
       '@arcblock/did-connect':
-        specifier: 2.6.9
+        specifier: ^2.6.9
         version: 2.6.9(@babel/core@7.22.9)(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
       '@arcblock/did-util':
-        specifier: 1.18.88
+        specifier: ^1.18.88
         version: 1.18.88
       '@arcblock/ux':
-        specifier: 2.6.9
+        specifier: ^2.6.9
         version: 2.6.9(@babel/core@7.22.9)(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
       '@blocklet/embed':
         specifier: ^0.0.4
@@ -62,7 +62,7 @@ importers:
         specifier: ^1.16.14-beta-3127f514
         version: 1.16.14-beta-a898bfcb
       '@blocklet/ui-react':
-        specifier: 2.6.9
+        specifier: ^2.6.9
         version: 2.6.9(@babel/core@7.22.9)(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
       '@mui/icons-material':
         specifier: ^5.14.1
@@ -471,7 +471,7 @@ packages:
     dependencies:
       '@arcblock/icons': 2.7.4(react@18.2.0)
       '@arcblock/react-hooks': 2.7.4
-      '@arcblock/ux': 2.6.9(@babel/core@7.22.9)(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
+      '@arcblock/ux': 2.7.1(@babel/core@7.22.9)(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
       '@arcblock/ws': 1.18.89
       '@auth0/auth0-react': 2.2.0(react-dom@18.2.0)(react@18.2.0)
       '@emotion/react': 11.11.1(react@18.2.0)
@@ -1395,7 +1395,7 @@ packages:
       react: '>=18.1.0'
     dependencies:
       '@arcblock/did-connect': 2.6.9(@babel/core@7.22.9)(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
-      '@arcblock/ux': 2.6.9(@babel/core@7.22.9)(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
+      '@arcblock/ux': 2.7.1(@babel/core@7.22.9)(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
       '@emotion/react': 11.11.1(react@18.2.0)
       '@emotion/styled': 11.11.0(@emotion/react@11.11.1)(react@18.2.0)
       '@iconify/iconify': 2.2.1
@@ -3095,7 +3095,7 @@ packages:
     dependencies:
       '@arcblock/did-connect': 2.6.9(@babel/core@7.22.9)(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
       '@arcblock/erc721did-contract': 0.3.19
-      '@arcblock/ux': 2.6.9(@babel/core@7.22.9)(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
+      '@arcblock/ux': 2.7.1(@babel/core@7.22.9)(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)
       '@blocklet/editor': 1.5.16(@babel/core@7.22.9)(@emotion/css@11.11.2)(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@iconify/iconify@3.1.1)(@mui/material@5.14.2)(prop-types@15.8.1)(react-dom@18.2.0)(react@18.2.0)(yjs@13.6.7)
       '@blocklet/tracker': 1.16.13
       '@emotion/react': 11.11.1(react@18.2.0)

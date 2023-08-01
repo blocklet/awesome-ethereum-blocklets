@@ -1,0 +1,105 @@
+{
+  "name": "base-is-for-builders",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "COMPONENT_STORE_URL=https://test.store.blocklet.dev blocklet dev",
+    "studio": "COMPONENT_STORE_URL=https://test.store.blocklet.dev blocklet dev studio",
+    "deploy:dev": "npm run bundle:dev && COMPONENT_STORE_URL=https://test.store.blocklet.dev blocklet deploy .blocklet/bundle",
+    "bundle:dev": "npm run bundle:client:dev && npm run bundle:api:dev",
+    "bundle:client:dev": "npm run build",
+    "bundle:api:dev": "npm run clean && COMPONENT_STORE_URL=https://test.store.blocklet.dev  blocklet bundle --zip --create-release",
+    "build": "vite build",
+    "eject": "vite eject",
+    "lint": "eslint src api --ext .mjs,.js,.jsx,.ts,.tsx",
+    "start": "NODE_ENV=development nodemon api/dev.js -w api",
+    "clean": "rm -rf .blocklet",
+    "bundle": "npm run bundle:client && npm run bundle:api",
+    "bundle:client": "npm run build",
+    "bundle:api": "npm run clean && blocklet bundle --zip --create-release",
+    "deploy": "npm run bundle && blocklet deploy .blocklet/bundle",
+    "upload": "npm run bundle && blocklet upload .blocklet/release/blocklet.json",
+    "preinstall": "npx only-allow pnpm"
+  },
+  "lint-staged": {
+    "*.{js,jsx,mjs,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{css,less,scss,json,graphql}": [
+      "prettier --write"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@abtnode/queue": "^1.16.13",
+    "@arcblock/did": "^1.18.89",
+    "@arcblock/did-auth": "^1.18.89",
+    "@arcblock/did-auth-storage-nedb": "^1.7.1",
+    "@arcblock/did-connect": "^2.7.1",
+    "@arcblock/did-util": "^1.18.89",
+    "@arcblock/ux": "^2.7.1",
+    "@blocklet/embed": "^0.0.4",
+    "@blocklet/sdk": "^1.16.13",
+    "@blocklet/ui-react": "^2.7.1",
+    "@mui/icons-material": "^5.14.1",
+    "@mui/material": "^5.14.2",
+    "@mui/styles": "^5.14.1",
+    "@nft-studio/react": "^0.1.21",
+    "@ocap/client": "^1.18.89",
+    "@ocap/mcrypto": "^1.18.89",
+    "@ocap/util": "^1.18.89",
+    "@ocap/wallet": "^1.18.89",
+    "ahooks": "^3.7.8",
+    "axios": "^1.4.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "cryptocurrency-icons": "^0.18.1",
+    "dayjs": "^1.11.9",
+    "dotenv-flow": "^3.2.0",
+    "ethers": "^5.7.2",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "express-history-api-fallback": "^2.2.1",
+    "flat": "^5.0.2",
+    "json-stable-stringify": "^1.0.2",
+    "lodash": "^4.17.21",
+    "lru-cache": "^7.18.3",
+    "mustache": "^4.2.0",
+    "notistack": "3.0.0-alpha.11",
+    "p-wait-for": "^3.2.0",
+    "path-parser": "^6.1.0",
+    "prop-types": "^15.8.1",
+    "qs": "^6.11.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.2",
+    "url-join": "4.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^2.2.0",
+    "nodemon": "^2.0.22",
+    "vite": "3.1.8",
+    "vite-plugin-blocklet": "^0.6.9",
+    "vite-plugin-html": "^3.2.0",
+    "vite-plugin-svgr": "^2.4.0",
+    "vite-plugin-windicss": "^1.9.0",
+    "windicss": "^3.5.6",
+    "windicss-webpack-plugin": "^1.7.8"
+  },
+  "resolutions": {
+    "@arcblock/did-motif": "1.1.6"
+  }
+}

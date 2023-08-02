@@ -1,3 +1,7 @@
+## 0.0.6 (August 02, 2023)
+
+- fix: resolve the bug of error api prefix
+
 ## 0.0.5 (August 02, 2023)
 
 - feat: add github link

@@ -1,3 +1,7 @@
+## 0.0.8 (August 02, 2023)
+
+- chore: adjust open graph not use env app info
+
 ## 0.0.7 (August 02, 2023)
 
 - fix: resolve the bug of open graph

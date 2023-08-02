@@ -52,7 +52,7 @@ function NFTIntro({
           <CardMedia
             component="img"
             key="nft"
-            className={!isLoaded && 'loading'}
+            className={!isLoaded ? 'loading' : ''}
             sx={{ height }}
             image={display}
             title={name}
@@ -168,19 +168,28 @@ function NFTIntro({
 
 NFTIntro.propTypes = {
   isMobile: PropTypes.bool,
-  name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
-  startTime: PropTypes.string.isRequired,
-  endTime: PropTypes.string.isRequired,
-  contractAddress: PropTypes.string.isRequired,
-  chainInfo: PropTypes.string.isRequired,
-  display: PropTypes.string.isRequired,
-  actions: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  description: PropTypes.string,
+  price: PropTypes.string,
+  startTime: PropTypes.string,
+  endTime: PropTypes.string,
+  contractAddress: PropTypes.any,
+  chainInfo: PropTypes.any,
+  display: PropTypes.string,
+  actions: PropTypes.array,
 };
 
 NFTIntro.defaultProps = {
   isMobile: false,
+  name: '',
+  description: '',
+  price: '',
+  startTime: '',
+  endTime: '',
+  contractAddress: null,
+  chainInfo: null,
+  display: '',
+  actions: [],
 };
 
 export default NFTIntro;

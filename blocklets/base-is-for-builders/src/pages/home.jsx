@@ -172,6 +172,7 @@ function Home() {
 
   const explorerUrl = getExplorerUrl({ explorer, value: contractAddress, type: 'address' });
   const introProps = {
+    key: 'intro',
     isMobile,
     name: 'Base is for builders',
     chainInfo: (
@@ -215,6 +216,7 @@ function Home() {
       'Base is by builders, for builders.\nWhen you combine new ideas and technology with brilliant people, you create an unwavering force for good in the world: builders. Builders are the tinkerers, the curious, the ones who live in, see, and create the future.',
     actions: [
       <Button
+        key="mint"
         disabled={!mintable || isLoading}
         sx={{
           textTransform: 'none',

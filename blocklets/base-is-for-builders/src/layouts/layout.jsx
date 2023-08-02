@@ -6,6 +6,8 @@ import { styled } from '@arcblock/ux/lib/Theme';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import { Outlet } from 'react-router-dom';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import { IconButton } from '@mui/material';
 // import ConnectButton from '@arcblock/did-connect/lib/Button';
 import { useSessionContext } from '../contexts/session';
 
@@ -23,7 +25,22 @@ function Layout({ children }) {
 
   return (
     <Root>
-      <Header {...(withoutLogo && { logo: null })} className="layout-header" maxWidth={false} />
+      <Header
+        {...(withoutLogo && { logo: null })}
+        className="layout-header"
+        maxWidth={false}
+        addons={(list) => {
+          return [
+            <IconButton
+              key="github"
+              href="https://github.com/blocklet/awesome-ethereum-blocklets/tree/main/blocklets/base-is-for-builders"
+              target="_blank">
+              <GitHubIcon />
+            </IconButton>,
+            ...list,
+          ];
+        }}
+      />
       <Container className="layout-container">
         <Box className="h-full" pt={2}>
           {children || <Outlet />}

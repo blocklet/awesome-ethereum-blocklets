@@ -53,7 +53,11 @@ function NFTIntro({
             component="img"
             key="nft"
             className={!isLoaded ? 'loading' : ''}
-            sx={{ height }}
+            sx={{
+              height,
+              pointerEvents: 'none',
+              userDrag: 'none',
+            }}
             image={display}
             title={name}
             onLoad={() => {

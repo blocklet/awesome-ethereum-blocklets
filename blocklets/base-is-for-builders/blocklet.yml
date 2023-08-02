@@ -1,5 +1,5 @@
 name: base-is-for-builders
-version: 0.0.4
+version: 0.0.5
 title: Base is for builders
 description: A blocklet that lets you mint "Base is for builders" NFT on Base Mainnet.
 keywords:
@@ -13,7 +13,7 @@ author:
   email: yongchao@arcblock.io
 repository:
   type: git
-  url: git+https://github.com/blocklet/awesome-ethereum-blocklets/tree/main/blocklets/base-is-for-builders
+  url: git+https://github.com/blocklet/awesome-ethereum-blocklets
 specVersion: 1.2.8
 logo: logo.png
 files:

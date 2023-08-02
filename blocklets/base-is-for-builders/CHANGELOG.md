@@ -1,3 +1,7 @@
+## 0.0.5 (August 02, 2023)
+
+- feat: add github link
+
 ## 0.0.4 (August 02, 2023)
 
 - chore: resolve console msg

@@ -4,7 +4,7 @@ const LRUCache = require('lru-cache');
 const { Path } = require('path-parser');
 const Mustache = require('mustache');
 const logger = require('../libs/logger');
-const env = require('../libs/env');
+// const env = require('../libs/env');
 
 const cache = new LRUCache({
   max: 100,
@@ -27,8 +27,8 @@ const openGraph = ({ staticDir, fileName = 'index.html', useCache = true } = {})
 
         if (!html) {
           const og = {
-            title: env.appName,
-            description: env.appDescription,
+            // title: env.appName,
+            // description: env.appDescription,
             embed: '/api/embed',
           };
 

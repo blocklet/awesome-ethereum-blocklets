@@ -20,6 +20,7 @@ import { getExplorerUrl, formatTime, waitForTxReceipt } from '../libs';
 import theme from '../libs/theme';
 import loading from '../assets/lottie/loading.json';
 import success from '../assets/lottie/success.json';
+import api from '../libs/api';
 
 const getAnimationData = (type = 'loading') => {
   if (type === 'loading') {
@@ -130,7 +131,7 @@ function Home() {
 
     const nextUrl = new URL(window.location.href);
     // pathname is mint-nft
-    nextUrl.pathname = joinUrl(window?.env?.apiPrefix ?? '/', '/api/did/mint-nft/token');
+    nextUrl.pathname = joinUrl(window?.blocklet?.prefix ?? '/', '/api/did/mint-nft/token');
     // map defaultParams to query
     Object.keys(defaultParams).forEach((key) => {
       nextUrl.searchParams.append(key, defaultParams[key]);
@@ -138,6 +139,7 @@ function Home() {
 
     authRef.current.open({
       action: 'sign-message',
+      checkFn: api.get,
       params: {
         ...defaultParams,
         nwUrl: nextUrl.href,

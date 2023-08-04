@@ -1,24 +1,41 @@
+const fs = require('fs');
+const path = require('path');
 const pick = require('lodash/pick');
 const { toBase58 } = require('@ocap/util');
 const ethers = require('ethers');
 const waitFor = require('p-wait-for');
 
-const mockChainList = [
-  {
-    networkName: 'base-mainnet',
-    chainName: 'Base Mainnet',
-    chainId: '8453',
-    symbol: 'ETH',
-    defaultRPC: 'https://developer-access-mainnet.base.org',
-    explorer: 'https://basescan.org',
-    verifyUrl: 'https://api.basescan.org/api',
-    contractAddress: '0x1FC10ef15E041C5D3C54042e52EB0C54CB9b710c',
-    icon: 'base',
-    enable: true,
-    decimal: 18,
-    isTest: false,
-  },
-];
+const getContractList = () => {
+  // use fs to red contracts dir
+  const contractsDir = fs.readdirSync(path.join(__dirname, '../contracts'));
+  const contractList = contractsDir.map((contract) => {
+    const contractName = contract.split('.')[0];
+    // eslint-disable-next-line import/no-dynamic-require, global-require
+    const item = require(`../contracts/${contractName}.json`);
+    return item;
+  });
+
+  return contractList;
+};
+
+const getChainList = () => {
+  const customChainList = [
+    {
+      networkName: 'base-mainnet',
+      chainName: 'Base Mainnet',
+      chainId: '8453',
+      symbol: 'ETH',
+      defaultRPC: 'https://developer-access-mainnet.base.org',
+      explorer: 'https://basescan.org',
+      verifyUrl: 'https://api.basescan.org/api',
+      icon: 'base',
+      enable: true,
+      decimal: 18,
+      isTest: false,
+    },
+  ];
+  return customChainList;
+};
 
 const getContractMessageByReceipt = ({ receipt, ...rest }) => {
   return {
@@ -52,7 +69,7 @@ const getAuthPrincipal = async ({ extraParams }) => {
 };
 
 function getChainInfo(chainId = '1') {
-  return mockChainList.find((x) => x.chainId === chainId);
+  return getChainList().find((x) => x.chainId === chainId);
 }
 
 function getProvider(chainId = '1') {
@@ -158,6 +175,8 @@ const waitForTxReceipt = async ({ contract, provider, txHash }) => {
 };
 
 module.exports = {
+  getContractList,
+  getChainList,
   getAuthPrincipal,
   getContractMessageByReceipt,
   getProvider,

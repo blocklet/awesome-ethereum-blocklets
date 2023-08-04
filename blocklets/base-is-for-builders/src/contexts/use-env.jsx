@@ -5,6 +5,7 @@ import { Avatar } from '@mui/material';
 import BNBIcon from 'cryptocurrency-icons/128/color/bnb.png';
 import ETHIcon from 'cryptocurrency-icons/128/color/eth.png';
 import OptimismIcon from '../assets/optimism.svg';
+import api from '../libs/api';
 
 const ABTIcon = 'https://assets.arcblock.io/icons/arc-abt-icon.png';
 
@@ -20,14 +21,7 @@ const ICON_MAP = {
 
 function EnvProvider({ children }) {
   const env = useReactive({
-    txFeeMap: {
-      nft: 0,
-      factory: 0,
-    },
-    hasNFTBlender: false,
-    didSpacesDisplayUrl: '',
-    uploadHost: '',
-    tokensList: [],
+    chainId: null,
     chainList: [],
     enableChainList: [],
     enableEvmChainList: [],
@@ -36,23 +30,8 @@ function EnvProvider({ children }) {
 
   async function refresh() {
     async function getEnv() {
-      const mockChainList = [
-        {
-          networkName: 'base-mainnet',
-          chainName: 'Base Mainnet',
-          chainId: '8453',
-          symbol: 'ETH',
-          defaultRPC: 'https://developer-access-mainnet.base.org',
-          explorer: 'https://basescan.org',
-          verifyUrl: 'https://api.basescan.org/api',
-          contractAddress: '0x1FC10ef15E041C5D3C54042e52EB0C54CB9b710c',
-          icon: 'base',
-          enable: true,
-          decimal: 18,
-          isTest: false,
-        },
-      ];
-      env.chainList = mockChainList.map((item) => {
+      const { data } = await api.get('/api/env');
+      env.chainList = data?.chainList?.map((item) => {
         const iconSrc = ICON_MAP[item.icon];
         return {
           ...item,
@@ -64,11 +43,23 @@ function EnvProvider({ children }) {
       env.enableEvmChainList = (env.enableChainList || []).filter(
         (item) => !['ocap', 'beta', 'main', 'default'].includes(item.chainId)
       );
+      if (!env.chainId) {
+        env.chainId = env?.chainList?.[0]?.chainId;
+      }
+      env.hadInit = true;
     }
     await getEnv();
 
     return env;
   }
+
+  const getCurrentChain = (chainId) => {
+    return env?.chainList?.find((item) => item.chainId === (chainId || env.chainId));
+  };
+
+  const setCurrentChainId = (chainId) => {
+    env.chainId = chainId;
+  };
 
   useEffect(() => {
     refresh();
@@ -78,6 +69,8 @@ function EnvProvider({ children }) {
     () => ({
       env,
       refresh,
+      getCurrentChain,
+      setCurrentChainId,
     }),
     [env, refresh]
   );

@@ -1,3 +1,7 @@
+## 0.0.9 (August 04, 2023)
+
+- chore: adjust logic of contracts
+
 ## 0.0.8 (August 02, 2023)
 
 - chore: adjust open graph not use env app info

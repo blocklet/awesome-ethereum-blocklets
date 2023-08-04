@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
 import { makeStyles } from '@mui/styles';
 import joinUrl from 'url-join';
 import { Button, IconButton, useMediaQuery } from '@mui/material';
@@ -12,10 +12,10 @@ import { ethers } from 'ethers';
 import { useLocaleContext } from '@arcblock/ux/lib/Locale/context';
 import { styled } from '@arcblock/ux/lib/Theme';
 import { ETHWallet, LottieAnimation } from '@nft-studio/react';
-import NFTContract from '../libs/NFTContract.json';
 import AuthDialog from '../components/auth-dialog';
 import NFTIntro from '../components/nft-intro';
 import { useEnv } from '../contexts/use-env';
+import { useContract } from '../contexts/use-contract';
 import { getExplorerUrl, formatTime, waitForTxReceipt } from '../libs';
 import theme from '../libs/theme';
 import loading from '../assets/lottie/loading.json';
@@ -36,20 +36,14 @@ function Home() {
   const { t } = useLocaleContext();
   const classes = useStyles();
   const isMobile = useMediaQuery((_theme) => _theme.breakpoints.down('md'));
-  const { env: envMap } = useEnv();
+  const { env, getCurrentChain } = useEnv();
+  const { getCurrentContract } = useContract();
 
   const state = useReactive({
-    chainId: '',
     loading: false,
     animationData: getAnimationData('loading'),
     txUrl: '',
   });
-
-  useEffect(() => {
-    if (!state.chainId) {
-      state.chainId = envMap?.chainList?.[0]?.chainId;
-    }
-  }, [envMap.chainList, state.chainId]);
 
   const playAnimation = () => {
     setTimeout(() => {
@@ -60,11 +54,8 @@ function Home() {
   const isLoading = state.loading;
   const isSuccess = state.txUrl && !isLoading;
 
-  const getCurrentChain = () => {
-    return envMap?.chainList?.find((item) => item.chainId === state.chainId);
-  };
-
-  const { contractAddress, defaultRPC, IconAvatar, chainName, isTest, explorer } = getCurrentChain() || {};
+  const { contractAddress, abi } = getCurrentContract() || {};
+  const { defaultRPC, IconAvatar, chainName, isTest, explorer } = getCurrentChain() || {};
 
   const onSuccessAuth = async (res) => {
     const [, { txHash }] = res;
@@ -97,7 +88,7 @@ function Home() {
   // eslint-disable-next-line no-unused-vars
   const openAuthDialogOtherWallet = async (wallet) => {
     // use other wallet
-    const setChainSuccess = await ethWalletRef.current?.setConnectedChain(state.chainId);
+    const setChainSuccess = await ethWalletRef.current?.setConnectedChain(env.chainId);
 
     // should set chain success
     if (!setChainSuccess) throw new Error(t('common.setChainFailureTip'));
@@ -107,10 +98,10 @@ function Home() {
 
     // eslint-disable-next-line no-unused-vars
     const signer = provider.getSigner();
-    const messages = 'all your base are belong to you.';
-    const contract = new ethers.Contract(contractAddress, NFTContract.abi, signer);
+    const message = 'all your base are belong to you.';
+    const contract = new ethers.Contract(contractAddress, abi, signer);
     try {
-      const signature = await signer.signMessage(messages);
+      const signature = await signer.signMessage(message);
       const receipt = await contract.mint(signature);
       // adjust DID Wallet Auth
       await onSuccessAuth([{}, { txHash: receipt.hash }]);
@@ -125,7 +116,7 @@ function Home() {
     const i18nKey = 'mint';
 
     const defaultParams = {
-      chainId: state.chainId,
+      chainId: env.chainId,
       contractAddress,
     };
 

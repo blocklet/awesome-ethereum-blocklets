@@ -1,7 +1,8 @@
 const { fromPublicKey } = require('@ocap/wallet');
 const { toTypeInfo, isEthereumDid } = require('@arcblock/did');
 const ethers = require('ethers');
-const NFTContract = require('../../libs/NFTContract.json');
+const BaseIsForBuildersContract = require('../../contracts/base-is-for-builders.json');
+// const bridgeToBase = require('../../contracts/bridge-to-base.json');
 const logger = require('../../libs/logger');
 const { getAuthPrincipal, getProvider, getTxData } = require('../../libs');
 
@@ -25,7 +26,7 @@ module.exports = {
 
         if (isETHWalletType) {
           const provider = await getProvider(chainId);
-          const contract = new ethers.Contract(contractAddress, NFTContract.abi, provider);
+          const contract = new ethers.Contract(contractAddress, BaseIsForBuildersContract.abi, provider);
 
           const txData = await getTxData({
             gasLimit: '100000',

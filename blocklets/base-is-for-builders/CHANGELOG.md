@@ -1,3 +1,7 @@
+## 0.0.10 (August 04, 2023)
+
+- fix: resolve the bug of contracts dir error
+
 ## 0.0.9 (August 04, 2023)
 
 - chore: adjust logic of contracts

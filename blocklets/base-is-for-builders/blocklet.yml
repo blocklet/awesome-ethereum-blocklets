@@ -1,5 +1,5 @@
 name: base-is-for-builders
-version: 0.0.9
+version: 0.0.10
 title: Base is for builders
 description: A blocklet that lets you mint "Base is for builders" NFT on Base Mainnet.
 keywords:
@@ -24,6 +24,7 @@ files:
   - blocklet.md
   - screenshots
   - api/hooks/pre-start.js
+  - api/contracts
   - uploads
 interfaces:
   - type: web

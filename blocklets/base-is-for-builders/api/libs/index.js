@@ -11,7 +11,7 @@ const getContractList = () => {
   const contractList = contractsDir.map((contract) => {
     const contractName = contract.split('.')[0];
     // eslint-disable-next-line import/no-dynamic-require, global-require
-    const item = require(`../contracts/${contractName}.json`);
+    const item = require(path.join(__dirname, `../contracts/${contractName}.json`));
     return item;
   });
 

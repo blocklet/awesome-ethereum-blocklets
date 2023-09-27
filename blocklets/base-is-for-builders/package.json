@@ -2,6 +2,7 @@
   "name": "base-is-for-builders",
   "version": "0.0.11",
   "private": true,
+  "author": "arcblock <blocklet@arcblock.io> https://github.com/blocklet",
   "scripts": {
     "dev": "COMPONENT_STORE_URL=https://test.store.blocklet.dev blocklet dev",
     "studio": "COMPONENT_STORE_URL=https://test.store.blocklet.dev blocklet dev studio",

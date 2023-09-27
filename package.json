@@ -2,6 +2,7 @@
   "name": "awesome-ethereum-blocklets",
   "version": "0.0.1",
   "private": true,
+  "author": "arcblock <blocklet@arcblock.io> https://github.com/blocklet",
   "scripts": {
     "bump-version": "zx scripts/bump-version.mjs --quiet",
     "update:deps": "taze -w -r && pnpm install",

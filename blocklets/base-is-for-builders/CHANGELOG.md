@@ -1,3 +1,15 @@
+## 0.0.11 (九月 27, 2023)
+
+- chore: polish author info
+
+## 0.0.10 (August 04, 2023)
+
+- fix: resolve the bug of contracts dir error
+
+## 0.0.9 (August 04, 2023)
+
+- chore: adjust logic of contracts
+
 ## 0.0.8 (August 02, 2023)
 
 - chore: adjust open graph not use env app info

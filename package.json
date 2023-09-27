@@ -2,6 +2,7 @@
   "name": "awesome-ethereum-blocklets",
   "version": "0.0.1",
   "private": true,
+  "author": "arcblock <blocklet@arcblock.io> https://github.com/blocklet",
   "scripts": {
     "bump-version": "zx scripts/bump-version.mjs --quiet",
     "update:deps": "taze -w -r && pnpm install",
@@ -14,7 +15,7 @@
   "devDependencies": {
     "@arcblock/eslint-config": "0.2.2",
     "bumpp": "^7.2.0",
-    "eslint": "^8.46.0",
+    "eslint": "^8.50.0",
     "husky": "^8.0.3",
     "prettier": "^2.8.8",
     "prompts": "^2.4.2",

@@ -22,6 +22,7 @@ import { isIframeWrapper } from './libs';
 import { SessionProvider } from './contexts/session';
 import { translations } from './locales/index';
 import { EnvProvider } from './contexts/use-env';
+import { ContractProvider } from './contexts/use-contract';
 
 function App() {
   const { locale } = useLocaleContext();
@@ -116,7 +117,9 @@ function WrappedApp() {
               horizontal: 'right',
             }}>
             <EnvProvider>
-              <App />
+              <ContractProvider>
+                <App />
+              </ContractProvider>
             </EnvProvider>
           </SnackbarProvider>
         </SessionProvider>

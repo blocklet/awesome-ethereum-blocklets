@@ -1,5 +1,5 @@
 name: base-is-for-builders
-version: 0.0.8
+version: 0.0.11
 title: Base is for builders
 description: A blocklet that lets you mint "Base is for builders" NFT on Base Mainnet.
 keywords:
@@ -9,8 +9,9 @@ group: dapp
 did: z8ia4EdAb2NNzETmtwZuJPAfWBoAtdyWCw76o
 main: api/index.js
 author:
-  name: Yongzhuo Liang
-  email: yongchao@arcblock.io
+  name: arcblock
+  email: blocklet@arcblock.io
+  url: https://github.com/blocklet
 repository:
   type: git
   url: git+https://github.com/blocklet/awesome-ethereum-blocklets
@@ -24,6 +25,7 @@ files:
   - blocklet.md
   - screenshots
   - api/hooks/pre-start.js
+  - api/contracts
   - uploads
 interfaces:
   - type: web
@@ -47,9 +49,9 @@ interfaces:
             - avatar
           allowSwitchProfile: true
           blockUnauthorized: false
-community: ""
-documentation: ""
-homepage: ""
+community: https://community.arcblock.io
+documentation: https://developer.blocklet.io
+homepage: https://store.blocklet.dev
 license: ""
 payment:
   price: []

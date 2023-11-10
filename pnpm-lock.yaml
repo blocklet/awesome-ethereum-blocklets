@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 overrides:
   '@abtnode/client': 1.16.14-beta-3127f514
   '@abtnode/constant': 1.16.14-beta-3127f514
@@ -92,8 +96,8 @@ importers:
         specifier: ^3.7.8
         version: 3.7.8(react@18.2.0)
       axios:
-        specifier: ^1.5.1
-        version: 1.5.1
+        specifier: ^1.6.0
+        version: 1.6.0
       cookie-parser:
         specifier: ^1.4.6
         version: 1.4.6
@@ -676,7 +680,7 @@ packages:
     resolution: {integrity: sha512-iIL+pWQYpY82zT+DNqzpkw3HsDQ4ICkR6XCd1vYMYkh+9u2/qWpCmDECbqtbvKvJNg60leeAPCmTxHSQOXXRzw==}
     dependencies:
       '@ocap/util': 1.18.34
-      axios: 1.5.1
+      axios: 1.6.0
       eslint: 8.50.0
       ethers: 5.7.2
       lodash: 4.17.21
@@ -1472,7 +1476,7 @@ packages:
   /@blocklet/embed@0.0.4:
     resolution: {integrity: sha512-xZJIVXSKlEtcxiWb4ZLM9v0vMta1uQXdv/0Emx4Zc76ihOF1qT+X8Du6kZX4Wt35Hp0BfGsX30avLGj4DheRxw==}
     dependencies:
-      axios: 1.5.1
+      axios: 1.6.0
       broadcast-channel: 5.1.0
       cheerio: 1.0.0-rc.12
       lodash: 4.17.21
@@ -3351,7 +3355,7 @@ packages:
       '@web3-onboard/walletconnect': 2.4.6(react@18.2.0)
       add: 2.0.6
       ahooks: 3.7.8(react@18.2.0)
-      axios: 1.5.1
+      axios: 1.6.0
       cryptocurrency-icons: 0.18.1
       dayjs: 1.11.10
       ethers: 5.7.2
@@ -5535,8 +5539,8 @@ packages:
       - debug
     dev: false
 
-  /axios@1.5.1:
-    resolution: {integrity: sha512-Q28iYCWzNHjAm+yEAot5QaAMxhMghWLFVf7rRdwhUI+c2jix2DUXjAHXVi+s1ibs3mjPO/cCgbA++3BjD0vP/A==}
+  /axios@1.6.0:
+    resolution: {integrity: sha512-EZ1DYihju9pwVB+jg67ogm+Tmqc6JmhamRN6I4Zt8DfZu5lbcQGw3ozH9lFejSJgs/ibaef3A9PMXPLeefFGJg==}
     dependencies:
       follow-redirects: 1.15.2(debug@4.3.4)
       form-data: 4.0.0
@@ -11137,6 +11141,7 @@ packages:
   /pidusage@2.0.21:
     resolution: {integrity: sha512-cv3xAQos+pugVX+BfXpHsbyz/dLzX+lr44zNMsYiGxUw+kV5sgQCIcLd1z+0vq+KyC7dJ+/ts2PsfgWfSC3WXA==}
     engines: {node: '>=8'}
+    requiresBuild: true
     dependencies:
       safe-buffer: 5.2.1
     dev: false
@@ -12994,6 +12999,7 @@ packages:
     engines: {node: '>=8.0.0'}
     os: [darwin, linux, win32, freebsd, openbsd, netbsd, sunos, android]
     hasBin: true
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -13299,6 +13305,7 @@ packages:
 
   /tx2@1.0.5:
     resolution: {integrity: sha512-sJ24w0y03Md/bxzK4FU8J8JveYYUbSs2FViLJ2D/8bytSiyPRbuE3DyL/9UKYXTZlV3yXq0L8GLlhobTnekCVg==}
+    requiresBuild: true
     dependencies:
       json-stringify-safe: 5.0.1
     dev: false
